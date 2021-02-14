@@ -1,35 +1,45 @@
+const fetchWeather = "/weather";
+
 const weatherForm = document.querySelector('form');
 const search = document.querySelector('input');
-const m1= document.querySelector('#message-1');
-const  m2= document.querySelector('#message-2');
-const  m3= document.querySelector('#message-3');
-const  m4= document.querySelector('#message-4');
+
+const weatherIcon = document.querySelector('.weatherIcon i');
+const Forecast = document.querySelector('.Forecast');
+
+const Temperature = document.querySelector('.Temperature span');
+
+const LocationA = document.querySelector('.Location');
+
+const dateElement = document.querySelector('.date');
+
+const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+dateElement.textContent = new Date().getDate() + ", " + monthNames[new Date().getMonth()].substring(0, 3);
 
 
-
-weatherForm.addEventListener('submit',(e)=>{
-    e.preventDefault();
-    const location = search.value;
-    
-m1.textContent = 'Loading...';
-m2.textContent ='';
-m3.textContent = '';
-m4.textContent = '';
-fetch('/weather?address='+location).then((response)=>{
-    response.json().then((data)=>{
-        if(data.error){
-            m1.textContent = data.error;
-        }
-        else{
-
-            m1.textContent='Latitude: ' + data.latitude;
-            m2.textContent='Longitude: ' + data.longitude;
-            m3.textContent='Location: ' + data.Location;
-            m4.textContent='Forecast: ' + data.Forecast;
-        }
-
-
+weatherForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    LocationA.textContent = "Loading...";
+    Temperature.textContent = "";
+    Forecast.textContent = "";
+    const locationApi = fetchWeather + "?address=" + search.value;
+    fetch(locationApi).then(response => {
+        response.json().then(data => {
+            if(data.error) {
+                LocationA.textContent = data.error;
+                Temperature.textContent = "";
+                Forecast.textContent = "";
+            } else {
+                console.log()
+                if(data.description === "rain" || data.description === "fog") {
+                    weatherIcon.className = "wi wi-day-" + data.description
+                } else {
+                    weatherIcon.className = "wi wi-day-cloudy"
+                }
+                LocationA.textContent = data.Location;
+                Forecast.textContent = data.Forecast;
+                Temperature.textContent = data.Temperature;
+            }
+        }) 
     });
-});
-
 })

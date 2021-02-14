@@ -12,8 +12,9 @@ const forecast = (latitude, longitude,callback)=>{
         }
         else
         {
-            callback(undefined, {Forecast: body.current.weather_descriptions[0] + ', It is currently '+ body.current.temperature + ' degrees out. It feels like ' + body.current.feelslike + ' degrees out.',
-                                 Location: body.location.name + ', '+ body.location.region + ', ' + body.location.country + '.'
+            callback(undefined, {Forecast: body.current.weather_descriptions[0],
+                                 Temperature: body.current.temperature
+                                //  Location: body.location.name + ', '+ body.location.region + ', ' + body.location.country + '.'
                             });
         }
 
