@@ -13,7 +13,7 @@ const forecast = (latitude, longitude,callback)=>{
         else
         {
             callback(undefined, {Forecast: body.current.weather_descriptions[0],
-                                 Temperature: body.current.temperature
+                                 Temperature: body.current.temperature 
                                 //  Location: body.location.name + ', '+ body.location.region + ', ' + body.location.country + '.'
                             });
         }

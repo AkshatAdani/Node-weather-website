@@ -11,7 +11,20 @@
 <body>
     <div class="main-content">
         {{>header}}
-<p>{{message}}</p>
+        <article class="widget">
+                
+                <div class="weatherIcon"><i class="wi wi-day-cloudy"></i></div>
+                <div class="weatherInfo">
+                    <div class="Temperature"><span></span></div>
+                    <div class="description">    
+                        <div class="Forecast">{{message}}</div>    
+                        <div class="Location"></div>
+                    </div>
+                </div>
+                <div class="date"></div>
+            </article>
+        
+
     </div>
 
 {{>footer}}

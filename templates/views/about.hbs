@@ -9,11 +9,24 @@
     <title>About</title>
 </head>
 <body>
-
-    <div class="main-content">{{>header}}
-        <p class="pack">This site was created by Akshat Adani. It uses data from mapbox.com and weatherstack.com</p>
-<img class="portrait" src ="/img/pic1.JPG">
+       <div class="main-content">{{>header}}
+    <article class="widget">
+                <div class="weatherIcon"> 
+                <img  class="wi wi-day-cloudy" src ="/img/pic1.JPG">
+                </div>
+                <div class="weatherInfo">
+                    <div class="Temperature"><span></span></div>
+                    <div class="description">    
+                        <div class="Forecast"></div>    
+                        <div class="Location"></div>
+                    </div>
+                </div>
+                <div class="date"></div>
+            </article>
 </div>
 {{>footer}}
 </body>
 </html>
+
+ 
+       

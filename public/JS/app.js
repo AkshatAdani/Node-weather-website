@@ -4,7 +4,7 @@ const weatherForm = document.querySelector('form');
 const search = document.querySelector('input');
 
 const weatherIcon = document.querySelector('.weatherIcon i');
-const Forecast = document.querySelector('.Forecast');
+const Forecasts = document.querySelector('.Forecast');
 
 const Temperature = document.querySelector('.Temperature span');
 
@@ -21,14 +21,14 @@ weatherForm.addEventListener('submit', (event) => {
     event.preventDefault();
     LocationA.textContent = "Loading...";
     Temperature.textContent = "";
-    Forecast.textContent = "";
+    Forecasts.textContent = "";
     const locationApi = fetchWeather + "?address=" + search.value;
     fetch(locationApi).then(response => {
         response.json().then(data => {
             if(data.error) {
                 LocationA.textContent = data.error;
                 Temperature.textContent = "";
-                Forecast.textContent = "";
+                Forecasts.textContent = "";
             } else {
                 console.log()
                 if(data.description === "rain" || data.description === "fog") {
@@ -37,8 +37,8 @@ weatherForm.addEventListener('submit', (event) => {
                     weatherIcon.className = "wi wi-day-cloudy"
                 }
                 LocationA.textContent = data.Location;
-                Forecast.textContent = data.Forecast;
-                Temperature.textContent = data.Temperature;
+                Forecasts.textContent = data.Forecast;
+                Temperature.textContent = data.Temperature + '°C';
             }
         }) 
     });
