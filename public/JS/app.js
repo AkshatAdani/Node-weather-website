@@ -1,4 +1,4 @@
-const fetchWeather = "/weather";
+const fetchWeather = "http://localhost:3000/weather";
 
 const weatherForm = document.querySelector('form');
 const search = document.querySelector('input');
