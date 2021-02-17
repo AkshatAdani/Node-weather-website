@@ -1,4 +1,4 @@
-const fetchWeather = "http://localhost:3000/weather";
+const fetchWeather = "/weather";
 
 const weatherForm = document.querySelector('form');
 const search = document.querySelector('input');
@@ -22,7 +22,7 @@ weatherForm.addEventListener('submit', (event) => {
     LocationA.textContent = "Loading...";
     Temperature.textContent = "";
     Forecasts.textContent = "";
-    const locationApi = fetchWeather + "?address=" + search.value;
+    const locationApi = "http://localhost:3000" + fetchWeather + "?address=" + search.value;
     fetch(locationApi).then(response => {
         response.json().then(data => {
             if(data.error) {
@@ -30,12 +30,12 @@ weatherForm.addEventListener('submit', (event) => {
                 Temperature.textContent = "";
                 Forecasts.textContent = "";
             } else {
-                console.log()
-                if(data.description === "rain" || data.description === "fog") {
-                    weatherIcon.className = "wi wi-day-" + data.description
-                } else {
-                    weatherIcon.className = "wi wi-day-cloudy"
-                }
+                // console.log()
+                // if(data.description === "rain" || data.description === "fog") {
+                //     weatherIcon.className = "wi wi-day-" + data.description
+                // } else {
+                //     weatherIcon.className = "wi wi-day-cloudy"
+                // }
                 LocationA.textContent = data.Location;
                 Forecasts.textContent = data.Forecast;
                 Temperature.textContent = data.Temperature + '°C';
