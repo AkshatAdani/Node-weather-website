@@ -54,15 +54,19 @@ h1 {
   justify-content: center;
   padding: 2rem;
   background-color: #fafafa;
+  
 }
-
 .weatherLocation button{
-  background: #080705;
-  color:#fff;
-  border: 1px solid transparent;
+  cursor: pointer;
+  border: 1px solid black;
+  background:black;
+  color: lightcyan;
+  padding: 8px;
+  font-weight: bold;
 }
-.weatherLocation input:focus{
-  outline: 0 none;
+.weatherLocation input{
+  border: 1px solid #cccccc;
+  padding: 8px;
 }
 
 .widget .weatherIcon {
@@ -76,6 +80,11 @@ h1 {
   align-items: center;
   justify-content: space-around;
   font-size: 100px;
+}
+.widget .weatherIcon .portrait{
+  height: 320px;
+  width: 250px;
+  padding-top: 130px;
 }
 .widget .weatherIcon i {
   padding-top: 30px;
