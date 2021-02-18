@@ -19,7 +19,7 @@ app.set('views', viewsPath);
 hbs.registerPartials(partialsPath);
 
 //Setup Static directory to serve.
-app.use(express.static(publicPath))
+app.use(express.static(publicPath));
 
 app.get('', (req,res) => {
     res.render('index', {
