@@ -38,6 +38,6 @@ weatherForm.addEventListener('submit', (event) => {
                 Forecasts.textContent = data.Forecast;
                 Temperature.textContent = data.Temperature + '°C';
             }
-        }) 
+        }); 
     });
-})
+});
