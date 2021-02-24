@@ -3,7 +3,9 @@ const express = require('express');
 const hbs = require('hbs');
 const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
-const chalk = require('chalk');
+// const chalk = require('chalk');
+const expressip = require('express-ip');
+
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -20,11 +22,11 @@ hbs.registerPartials(partialsPath);
 
 //Setup Static directory to serve.
 app.use(express.static(publicPath));
-
 app.get('', (req,res) => {
+    // console.log(req);
     res.render('index', {
         title: 'Weather App',
-        name: 'Akshat adani'
+        name: 'Akshat adani',
     });
 })
 app.get('/about', (req,res) => {
@@ -48,6 +50,9 @@ app.get('/weather', (req, res)=>{
         });
 
     }else{
+        
+        
+        
         geocode(req.query.address,(error,{latitude,longitude,Location}={})=>{
                 if(error){
                     return res.send({error});
@@ -95,12 +100,15 @@ app.get('*', (req, res)=>{
         name: 'Akshat adani',
         errorMessage: 'Page not found'
     })
-   
-
 });
+
+
 
 app.listen(port, ()=>{
         console.log('Server is up on '+ port);
 });
+
+
+
 
 

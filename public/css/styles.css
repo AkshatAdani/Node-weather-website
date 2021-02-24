@@ -56,13 +56,14 @@ h1 {
   background-color: #fafafa;
   
 }
-.weatherLocation button{
+.weatherLocation button {
   cursor: pointer;
   border: 1px solid black;
   background:black;
   color: lightcyan;
   padding: 8px;
   font-weight: bold;
+  margin-left: 0.2rem;
 }
 .weatherLocation input{
   border: 1px solid #cccccc;
@@ -127,12 +128,16 @@ h1 {
   background: rgb(68, 112, 207);
   border-bottom-right-radius: 20px;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  flex-direction:column;
+  align-items:center;
   color: white;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 800;
 }
+.time {
+  padding-top: 15%;
+}
+
 
 p {
   position: fixed;

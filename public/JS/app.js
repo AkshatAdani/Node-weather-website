@@ -8,13 +8,39 @@ const Temperature = document.querySelector('.Temperature span');
 
 const LocationA = document.querySelector('.Location');
 
-const dateElement = document.querySelector('.date');
+const dateElement = document.querySelector('.dates');
+const timeElement = document.querySelector('.time');
 
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-dateElement.textContent = new Date().getDate() + ", " + monthNames[new Date().getMonth()].substring(0, 3);
+timeElement.textContent = getTime();
+dateElement.textContent = getDate();
 
 
+function getDate() {
+    var date = new Date();
+
+    var year = date.getFullYear();
+
+    var month = date.getMonth() + 1;
+    month = (month < 10 ? "0" : "") + month;
+
+    var day  = date.getDate();
+    day = (day < 10 ? "0" : "") + day;
+
+    return day + "-" + month + "-" + year;
+}
+function getTime(){
+    var date = new Date();
+
+    var hour = date.getHours();
+    hour = (hour < 10 ? "0" : "") + hour;
+
+    var min  = date.getMinutes();
+    min = (min < 10 ? "0" : "") + min;
+
+    return hour + ":" + min;
+}
 weatherForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const location = search.value;
@@ -41,3 +67,8 @@ weatherForm.addEventListener('submit', (event) => {
         }); 
     });
 });
+
+
+    
+
+

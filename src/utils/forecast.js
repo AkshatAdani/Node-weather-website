@@ -12,7 +12,8 @@ const forecast = (latitude, longitude,callback)=>{
         }
         else
         {
-            callback(undefined, {Forecast: body.current.weather_descriptions[0],
+            callback(undefined, {
+                                    Forecast: body.current.weather_descriptions[0],
                                  Temperature: body.current.temperature 
                                 //  Location: body.location.name + ', '+ body.location.region + ', ' + body.location.country + '.'
                             });
@@ -21,5 +22,27 @@ const forecast = (latitude, longitude,callback)=>{
 });
 
 }
+
+function geoFindMe() {
+    
+    function success(position) {
+      const latitude  = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      console.log(latitude);
+      console.log(longitude);
+    }
+    
+    if(!navigator.geolocation) {
+      status.textContent = 'Geolocation is not supported by your browser';
+    } else {
+      status.textContent = 'Locating…';
+      navigator.geolocation.getCurrentPosition(success, error);
+    }
+    
+}
+    
+    
+
+
 
 module.exports = forecast;
